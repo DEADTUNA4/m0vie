@@ -22,11 +22,65 @@ async function fetchLocalData() {
 
 // --- HOME PAGE LOGIC ---
 let allData = { movies: [], series: [] };
+let heroInterval = null;
 
 async function loadContent() {
     allData = await fetchLocalData();
     renderGrids(allData.movies, allData.series);
     setupSearch();
+    startHeroRotation();
+}
+
+function startHeroRotation() {
+    const combined = [...allData.movies, ...allData.series];
+    if (combined.length === 0) return;
+
+    // Initial rotation
+    rotateHero(combined);
+
+    // Set interval for every 5 seconds
+    if (heroInterval) clearInterval(heroInterval);
+    heroInterval = setInterval(() => {
+        rotateHero(combined);
+    }, 5000);
+}
+
+function rotateHero(items) {
+    const heroBg = document.getElementById('hero-bg');
+    const heroTitle = document.getElementById('hero-title');
+    const heroDesc = document.getElementById('hero-desc');
+    const heroPlayLink = document.getElementById('hero-play-link');
+    const heroContent = document.getElementById('hero-content');
+
+    if (!heroBg || !heroTitle) return;
+
+    // Pick random item
+    const item = items[Math.floor(Math.random() * items.length)];
+
+    // Fade out content
+    heroContent.style.opacity = '0';
+
+    setTimeout(async () => {
+        // Update content
+        heroTitle.innerText = item.title;
+        heroPlayLink.href = `player.html?id=${item.imdbID}`;
+        
+        // Use high-quality poster for background
+        const highResPoster = item.poster.replace('_V1_SX300.jpg', '_V1_.jpg');
+        heroBg.style.backgroundImage = `url('${highResPoster}')`;
+
+        // Fetch plot if possible (limited to avoid API spam, but 1 fetch per 5s is usually okay for short sessions)
+        try {
+            const res = await fetch(`https://www.omdbapi.com/?i=${item.imdbID}&apikey=${OMDb_API_KEY}`);
+            const data = await res.json();
+            heroDesc.innerText = data.Plot !== 'N/A' ? data.Plot : `${item.title} (${item.year})`;
+        } catch (e) {
+            heroDesc.innerText = `${item.title} (${item.year})`;
+        }
+
+        // Fade in content
+        heroContent.style.opacity = '1';
+    }, 500);
 }
 
 function renderGrids(movies, series) {
