@@ -1,0 +1,79 @@
+[
+  {
+    "imdbID": "tt0903747",
+    "title": "Breaking Bad",
+    "year": "2008–2013",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjhiMzgxZTctNDc1Ni00OTIxLTlhMTUtZTAzMy1jOTkzZDUwXkEyXkFqcGdeQXVyMzQ4MDYyMDU@._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt12343534",
+    "title": "Jujutsu Kaisen",
+    "year": "2020–",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjBlNTExMDAtMWZjZi00MDc5LWFkMjgtZDU0ZWQ5ODk3YWY5XkEyXkFqcGc@._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt12507774",
+    "title": "Rent-a-Girlfriend",
+    "year": "2020–",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMGRjYjA2M2EtZTM3ZC00Y2ZkLThmZGEtN2U1NWY4YjY0ZGU3XkEyXkFqcGdeQXVyNjgyODQ0MTE@._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt21821142",
+    "title": "Unicorn Academy",
+    "year": "2023–",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDUyZjliOTgtNTA0MC00Yjg4LWI4NjctOWY3YjMxNDY0NmM4XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt2442560",
+    "title": "Peaky Blinders",
+    "year": "2013–2022",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjYzZDgzMmYtZGIxNS00ZTMwLWIxMzgtYzlkMzY1OTVjYzkwXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt13443470",
+    "title": "Wednesday",
+    "year": "2022–",
+    "poster": "https://m.media-amazon.com/images/M/MV5BM2MyNWY0N2UtNTAxMS00MzVlLTgwMDMtOTM2ZmU1YjQ4ZGNjXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt4574334",
+    "title": "Stranger Things",
+    "year": "2016–2025",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMVVhODlhYjMtYDUxNy00Zjc0LWE4ZjAtN2Y5ZDkwZTM2ZDhmXkEyXkFqcGdeQXVyMTUyNjc1Mg@@._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt0062598",
+    "title": "One Piece",
+    "year": "1999–",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTNjNGU4NTUtY2UxMy00N2I5LThjOTUtOTU0MzUxM2MzZTZhXkEyXkFqcGdeQXVyNjkzNzc4OTY@._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt11737520",
+    "title": "One Piece",
+    "year": "2023–",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMmQ5YmI2YTMtYjU4YS00YTM0LWI0YzctYTM3N2IxZDBhYzliXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt0409591",
+    "title": "Naruto",
+    "year": "2002–2007",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGExYjQzNTQtNGNhMi00YmY1LThhMGAtZDRjZmU0OTU5OTU4XkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+    "type": "series"
+  },
+  {
+    "imdbID": "tt1232283",
+    "title": "Chainsaw Man",
+    "year": "2022–",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNGE0NDgzNzYtYjIzNC00ZWRhLTk0OWYtN2ZlMzE0YjY0ZGM0XkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
+    "type": "series"
+  }
+]

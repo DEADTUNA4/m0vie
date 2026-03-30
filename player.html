@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mO movies - Watching Movie/Series</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #141414;
+            color: white;
+        }
+        .video-container {
+            aspect-ratio: 16/9;
+            background-color: black;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="bg-[#141414]">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-[#141414] px-4 py-4 md:px-12 flex items-center justify-between border-b border-gray-800">
+        <div class="flex items-center space-x-8">
+            <a href="index.html" class="text-red-600 text-3xl font-black tracking-tighter uppercase">mO movies</a>
+            <div class="hidden md:flex space-x-4 text-sm font-medium">
+                <a href="index.html" class="hover:text-gray-300 text-gray-400">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Player Main Area -->
+    <main class="pt-24 px-4 md:px-12 max-w-6xl mx-auto">
+        <!-- Video Container -->
+        <div class="video-container relative group mb-8">
+            <iframe id="video-iframe" class="w-full h-full border-0" allowfullscreen></iframe>
+            <!-- Loading Overlay -->
+            <div id="loading-overlay" class="absolute inset-0 bg-black flex items-center justify-center">
+                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-red-600"></div>
+            </div>
+        </div>
+
+        <!-- Controls & Info -->
+        <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="w-full md:w-2/3">
+                <div class="flex items-center space-x-4 mb-4">
+                    <h2 id="media-title" class="text-3xl font-bold">Loading...</h2>
+                    <span id="media-year" class="text-gray-400 bg-gray-800 px-2 py-0.5 rounded text-sm"></span>
+                </div>
+                
+                <!-- Season/Episode Selector (for TV series) -->
+                <div id="series-controls" class="hidden mb-6 bg-gray-900 p-4 rounded-lg flex flex-wrap items-center gap-4">
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-gray-400">Season:</label>
+                        <select id="season-select" class="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-red-600"></select>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-gray-400">Episode:</label>
+                        <select id="episode-select" class="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-red-600"></select>
+                    </div>
+                </div>
+
+                <p id="media-plot" class="text-gray-300 leading-relaxed mb-6">Fetching metadata...</p>
+                <div id="media-info" class="text-sm text-gray-500 space-y-1">
+                    <p>Genre: <span id="media-genre" class="text-gray-300"></span></p>
+                    <p>Director: <span id="media-director" class="text-gray-300"></span></p>
+                    <p>Actors: <span id="media-actors" class="text-gray-300"></span></p>
+                </div>
+            </div>
+
+            <!-- Server Switcher -->
+            <div class="w-full md:w-1/3 bg-gray-900 p-6 rounded-lg border border-gray-800">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    Server Switcher
+                </h3>
+                <p class="text-xs text-gray-400 mb-6">If the current server is slow or doesn't work, try another one.</p>
+                <div class="flex flex-col space-y-3">
+                    <button onclick="changeServer(1)" class="server-btn active bg-red-600 text-white py-3 rounded font-bold hover:bg-red-700 transition">Server 1 (VidSrc)</button>
+                    <button onclick="changeServer(2)" class="server-btn bg-gray-800 text-white py-3 rounded font-bold hover:bg-gray-700 transition">Server 2 (SuperEmbed)</button>
+                    <button onclick="changeServer(3)" class="server-btn bg-gray-800 text-white py-3 rounded font-bold hover:bg-gray-700 transition">Server 3 (Multi-Src)</button>
+                </div>
+                <p class="mt-6 text-[10px] text-gray-600 text-center uppercase tracking-widest">DMCA: No files hosted on mO movies</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initPlayer();
+        });
+    </script>
+</body>
+</html>

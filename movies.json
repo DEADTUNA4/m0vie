@@ -1,0 +1,37 @@
+[
+  {
+    "imdbID": "tt0111161",
+    "title": "The Shawshank Redemption",
+    "year": "1994",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+    "type": "movie"
+  },
+  {
+    "imdbID": "tt0816692",
+    "title": "Interstellar",
+    "year": "2014",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+    "type": "movie"
+  },
+  {
+    "imdbID": "tt0241527",
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "year": "2001",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMGVmMWNiMDktYjQ0Mi00MWIxLTk0N2UtN2ZlYTdkN2IzNDNlXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg",
+    "type": "movie"
+  },
+  {
+    "imdbID": "tt0295297",
+    "title": "Harry Potter and the Chamber of Secrets",
+    "year": "2002",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjE0YjUzNDUtMjc5OS00MTU3LTgxMmUtODhkOThkMzdjNWI4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+    "type": "movie"
+  },
+  {
+    "imdbID": "tt0304141",
+    "title": "Harry Potter and the Prisoner of Azkaban",
+    "year": "2004",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTYwNjAyMDgxNjVeQTJeQWpwZ15BbWU3MDQxNDExMTk@._V1_SX300.jpg",
+    "type": "movie"
+  }
+]

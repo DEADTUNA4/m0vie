@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mO movies - Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #141414;
+            color: white;
+        }
+        .admin-card {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px border-gray-800;
+        }
+    </style>
+</head>
+<body class="bg-[#141414] min-h-screen flex items-center justify-center p-4">
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-90 z-[100] flex items-center justify-center">
+        <div class="bg-[#1a1a1a] p-8 rounded-xl max-w-sm w-full border border-gray-800">
+            <h2 class="text-2xl font-bold mb-6 text-center text-red-600 uppercase tracking-tighter">mO Admin Access</h2>
+            <div class="space-y-4">
+                <input type="password" id="admin-pass" placeholder="Enter Password" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-red-600 transition">
+                <button onclick="checkAdminAuth()" class="w-full bg-red-600 text-white font-bold py-3 rounded-lg hover:bg-red-700 transition">Unlock Dashboard</button>
+            </div>
+            <p class="mt-4 text-xs text-gray-500 text-center">Protected Area - Authorized Personnel Only</p>
+        </div>
+    </div>
+
+    <!-- Admin Content -->
+    <div id="admin-content" class="hidden w-full max-w-4xl">
+        <div class="flex items-center justify-between mb-8">
+            <h1 class="text-3xl font-bold">Admin Dashboard</h1>
+            <button onclick="logoutAdmin()" class="bg-gray-800 text-gray-400 px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition">Logout</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Add Form -->
+            <div class="md:col-span-2 admin-card">
+                <h3 class="text-xl font-bold mb-6">Add New Content</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">IMDb ID (tt...)</label>
+                        <div class="flex space-x-2">
+                            <input type="text" id="imdb-id-input" placeholder="e.g. tt1234567" class="flex-1 bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-red-600 transition">
+                            <button onclick="fetchFromOMDb()" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition flex items-center">
+                                <span id="fetch-btn-text">Fetch Info</span>
+                                <div id="fetch-spinner" class="hidden ml-2 animate-spin rounded-full h-4 w-4 border-2 border-white"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Preview Section -->
+                    <div id="preview-area" class="hidden bg-gray-900 p-4 rounded-lg border border-gray-800 flex gap-4">
+                        <img id="preview-poster" src="" class="w-24 h-36 object-cover rounded shadow-lg">
+                        <div class="flex-1">
+                            <h4 id="preview-title" class="text-lg font-bold"></h4>
+                            <p id="preview-year" class="text-gray-400 text-sm"></p>
+                            <p id="preview-type" class="text-xs uppercase bg-gray-800 px-2 py-0.5 rounded inline-block mt-2 text-red-600 font-bold"></p>
+                            <div class="mt-4">
+                                <button onclick="saveContent()" class="bg-green-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-green-700 transition">Confirm & Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats/Settings -->
+            <div class="admin-card">
+                <h3 class="text-xl font-bold mb-6">Library Stats</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center bg-gray-900 p-3 rounded-lg border border-gray-800">
+                        <span class="text-gray-400">Total Movies</span>
+                        <span id="stat-movies" class="font-bold text-red-600">0</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-gray-900 p-3 rounded-lg border border-gray-800">
+                        <span class="text-gray-400">Total Series</span>
+                        <span id="stat-series" class="font-bold text-red-600">0</span>
+                    </div>
+                    <button onclick="clearLibrary()" class="w-full bg-red-600 bg-opacity-10 text-red-600 border border-red-600 border-opacity-20 py-3 rounded-lg text-sm font-bold hover:bg-opacity-20 transition">Clear All (Local Storage)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Section -->
+        <div class="admin-card mt-8">
+            <h3 class="text-xl font-bold mb-6">Manage Library</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-gray-400 border-b border-gray-800">
+                            <th class="py-4 font-medium">Poster</th>
+                            <th class="py-4 font-medium">Title</th>
+                            <th class="py-4 font-medium">Type</th>
+                            <th class="py-4 font-medium">IMDb ID</th>
+                            <th class="py-4 font-medium text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="manage-table-body">
+                        <!-- Items will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initAdmin();
+        });
+    </script>
+</body>
+</html>
